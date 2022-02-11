@@ -10,3 +10,14 @@ Widget text(String text) {
     overflow: TextOverflow.ellipsis,
   );
 }
+
+Widget smallText(String text) {
+  return Text(
+    text,
+    style: GoogleFonts.roboto(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+    ),
+    overflow: TextOverflow.ellipsis,
+  );
+}
