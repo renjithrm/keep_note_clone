@@ -1,13 +1,22 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:notes_app/controller/firebase_controller.dart';
 import 'package:notes_app/constant/reuse_functions.dart';
 import 'package:notes_app/service/firebase_database.dart';
+import 'package:notes_app/view/full_notes_screen.dart';
 
-class AddScreen extends StatelessWidget {
+class UpdareScreen extends StatelessWidget {
+  String? title;
+  String? content;
+  String id;
+  UpdareScreen({
+    Key? key,
+    this.title,
+    this.content,
+    required this.id,
+  }) : super(key: key);
   Widget div = SizedBox(
     height: 10,
   );
@@ -20,14 +29,16 @@ class AddScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _titleController.text = title ??= "";
+    _contentController.text = content ??= "";
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
             child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -44,6 +55,7 @@ class AddScreen extends StatelessWidget {
                           if (value!.isEmpty) {
                             return "**requried";
                           }
+                          return null;
                         },
                       ),
                       div,
@@ -61,6 +73,7 @@ class AddScreen extends StatelessWidget {
                           if (value!.isEmpty) {
                             return "**requried";
                           }
+                          return null;
                         },
                       )
                     ],
@@ -70,7 +83,7 @@ class AddScreen extends StatelessWidget {
               div,
               div,
               div,
-              Container(
+              SizedBox(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
@@ -78,11 +91,18 @@ class AddScreen extends StatelessWidget {
                         child: ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                await FirebaseDatabase().createDocument(
+                                await FirebaseDatabase().updata(
                                     _titleController.text,
-                                    _contentController.text);
+                                    _contentController.text,
+                                    id);
                                 Get.find<FirebaseController>().update(["home"]);
-                                Navigator.of(context).pop();
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => NoteScreen(
+                                            title: _titleController.text,
+                                            content: _contentController.text,
+                                            id: id)));
+                                // Navigator.of(context).pop();
                               } else {
                                 debugPrint("not validate");
                               }

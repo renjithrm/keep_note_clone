@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "44903435705",
+    "project_id": "keep-notes-26205",
+    "storage_bucket": "keep-notes-26205.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44903435705:android:e1c888667f37ae37507a68",
+        "android_client_info": {
+          "package_name": "com.renjithrm.keepnote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "44903435705-lts41kng4tt54lulprl957h316tqqhhr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJc8buIWUMrhHdeC2kZH-GUFgI8avobsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "44903435705-lts41kng4tt54lulprl957h316tqqhhr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
