@@ -36,7 +36,7 @@ Widget textFormField(
     validator: validator,
     decoration: InputDecoration(
       hintText: hintText,
-      border: OutlineInputBorder(),
+      border: const OutlineInputBorder(),
     ),
     keyboardType: keyboardType,
   );
